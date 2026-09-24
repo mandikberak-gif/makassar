@@ -1,18 +1,18 @@
-/**
- * JURAGAN 77 RENTAL MOBIL MAKASSAR
+﻿/**
+ * SARAPPO 4788 RENTAL MOBIL MAKASSAR
  * Interactive Javascript Logic & WhatsApp Integration
  */
 
-// Konfigurasi Kontak Juragan 77
+// Konfigurasi Kontak Sarappo 4788 Rental
 const JURAGAN_CONFIG = {
   phoneDisplay: "0821-7121-1777",
   waNumber: "6282171211777", // Format internasional tanpa simbol
-  email: "kontak@juragan77rental.com",
+  email: "kontak@sarappo4788rental.com",
   officeAddress: "Jl. Perintis Kemerdekaan KM 18 (Dekat Bandara Sultan Hasanuddin), Makassar, Sulawesi Selatan",
-  instagram: "@juragan77_rentalmakassar"
+  instagram: "@sarappo4788_rentalmakassar"
 };
 
-// Data Lengkap Armada Juragan 77 (15 Pilihan Armada Lengkap)
+// Data Lengkap Armada Sarappo 4788 Rental (15 Pilihan Armada Lengkap)
 const FLEET_DATA = [
   {
     id: "alphard-modellista-2025",
@@ -436,7 +436,7 @@ function renderFleetCards(filter = "all") {
           <button class="btn btn-outline btn-sm btn-open-detail" data-id="${car.id}">
             Detail Unit
           </button>
-          <a href="${createWhatsAppURL(`Halo Juragan 77 Makassar, saya tertarik sewa unit *${car.name}* (${car.year}). Mohon info ketersediaan unit untuk jadwal saya. Terima kasih!`)}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          <a href="${createWhatsAppURL(`Halo Sarappo 4788 Rental Makassar, saya tertarik sewa unit *${car.name}* (${car.year}). Mohon info ketersediaan unit untuk jadwal saya. Terima kasih!`)}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
             Sewa Unit
           </a>
         </div>
@@ -498,7 +498,7 @@ function setupQuickBookingCalculator() {
       const duration = document.getElementById("booking-duration") ? document.getElementById("booking-duration").value : "1 Hari";
       const location = document.getElementById("booking-location") ? document.getElementById("booking-location").value : "Bandara Sultan Hasanuddin (UPG)";
 
-      const waMessage = `*HALO JURAGAN 77 - BOOKING RENTAL MOBIL MAKASSAR*
+      const waMessage = `*HALO SARAPPO 4788 RENTAL - BOOKING SEWA MOBIL MAKASSAR*
 ---------------------------------------
 Saya ingin melakukan reservasi armada dengan detail:
 • *Pilihan Mobil:* ${carName}
@@ -596,7 +596,7 @@ function openCarModal(carId) {
       </div>
 
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="${createWhatsAppURL(`Halo CS Juragan 77, saya berminat memesan mobil *${car.name}* (${car.year}). Mohon info ketersediaan unit dan persyaratan.`)}" target="_blank" rel="noopener" class="btn btn-primary" style="flex:1;">
+        <a href="${createWhatsAppURL(`Halo CS Sarappo 4788 Rental, saya berminat memesan mobil *${car.name}* (${car.year}). Mohon info ketersediaan unit dan persyaratan.`)}" target="_blank" rel="noopener" class="btn btn-primary" style="flex:1;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
           Pesan Unit Ini Sekarang
         </a>
@@ -674,7 +674,7 @@ function setupTourBookingButtons() {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const tourTitle = btn.getAttribute("data-tour") || "Paket Wisata Sulawesi";
-      const message = `Halo Juragan 77 Makassar, saya tertarik dengan paket: *${tourTitle}*. Mohon informasi ketersediaan armada, jadwal, dan rincian harga lengkapnya. Terima kasih!`;
+      const message = `Halo Sarappo 4788 Rental Makassar, saya tertarik dengan paket: *${tourTitle}*. Mohon informasi ketersediaan armada, jadwal, dan rincian harga lengkapnya. Terima kasih!`;
       window.open(createWhatsAppURL(message), "_blank");
     });
   });
@@ -940,11 +940,11 @@ function openWebLightbox(id) {
     badge.className = `web-cat-badge ${cat}`;
     badge.textContent = `${catInfo.icon} ${catInfo.label}`;
   }
-  if (desc) desc.textContent = item.keterangan || "Unit resmi dan dokumentasi perjalanan pelanggan Juragan 77 Rental Mobil Makassar.";
-  if (time) time.textContent = item.isReal ? "⭐ Dokumentasi Terverifikasi Juragan 77" : "✨ Unit Siap Jalan 24 Jam";
+  if (desc) desc.textContent = item.keterangan || "Unit resmi dan dokumentasi perjalanan pelanggan Sarappo 4788 Rental Rental Mobil Makassar.";
+  if (time) time.textContent = item.isReal ? "⭐ Dokumentasi Terverifikasi Sarappo 4788 Rental" : "✨ Unit Siap Jalan 24 Jam";
 
   if (waBtn) {
-    const waMsg = `Halo Juragan 77 Makassar, saya melihat foto *${item.judul}* di galeri website. Mau tanya ketersediaan dan sewa unit ini. Terima kasih!`;
+    const waMsg = `Halo Sarappo 4788 Rental Makassar, saya melihat foto *${item.judul}* di galeri website. Mau tanya ketersediaan dan sewa unit ini. Terima kasih!`;
     waBtn.href = createWhatsAppURL(waMsg);
   }
 
@@ -983,3 +983,4 @@ document.addEventListener("DOMContentLoaded", () => {
     initWebsiteGallery();
   });
 });
+

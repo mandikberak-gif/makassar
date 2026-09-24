@@ -578,7 +578,7 @@ async function renderDashboardGaleri() {
         </div>
         <div class="dash-unit-info">
           <div class="dash-unit-title">${g.judul}</div>
-          ${g.keterangan ? `<div class="dash-unit-desc">${g.keterangan}</div>` : '<div class="dash-unit-desc" style="color:var(--text-dim);font-style:italic;">Dokumentasi unit resmi Juragan 77 Makassar</div>'}
+          ${g.keterangan ? `<div class="dash-unit-desc">${g.keterangan}</div>` : '<div class="dash-unit-desc" style="color:var(--text-dim);font-style:italic;">Dokumentasi unit resmi Sarappo 4788 Rental Makassar</div>'}
           <div class="dash-unit-meta">
             <span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
@@ -616,7 +616,7 @@ async function openLightbox(id) {
     badge.className = `dash-cat-badge ${cat}`;
     badge.textContent = `${info.icon} ${info.label}`;
   }
-  if (desc) desc.textContent = item.keterangan || 'Unit resmi armada & dokumentasi Juragan 77 Makassar.';
+  if (desc) desc.textContent = item.keterangan || 'Unit resmi armada & dokumentasi Sarappo 4788 Rental Makassar.';
   if (meta) meta.textContent = `📅 Diupload: ${formatDate(item.createdAt)}${item.fileName ? ` · 📁 ${item.fileName}` : ''}`;
 
   if (modal) modal.classList.add('open');
@@ -789,8 +789,9 @@ document.getElementById('form-password').addEventListener('submit', e => {
   const confirm = document.getElementById('p-confirm').value;
   const newUser = document.getElementById('p-user').value.trim();
 
-  const storedPass = localStorage.getItem('j77_admin_pass') || 'juragan77';
-  if (oldPass !== storedPass)  { toast('Password lama salah!', 'error'); return; }
+  const storedPass = localStorage.getItem('j77_admin_pass');
+  const isOldValid = storedPass ? (oldPass === storedPass) : (oldPass === 'sarappo4788' || oldPass === 'juragan77');
+  if (!isOldValid)  { toast('Password lama salah!', 'error'); return; }
   if (newPass.length < 6)      { toast('Password baru minimal 6 karakter!', 'error'); return; }
   if (newPass !== confirm)     { toast('Konfirmasi password tidak cocok!', 'error'); return; }
 

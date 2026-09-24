@@ -5,7 +5,7 @@
 
 const ADMIN_CREDENTIALS = {
   username: 'admin',
-  password: 'juragan77'
+  passwords: ['sarappo4788', 'juragan77']
 };
 
 // Redirect to dashboard if already logged in
@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     errorBox.style.display = 'none';
 
     setTimeout(() => {
-      if (user === ADMIN_CREDENTIALS.username && pass === ADMIN_CREDENTIALS.password) {
+      const customPass = localStorage.getItem('j77_admin_pass');
+      const isPassValid = ADMIN_CREDENTIALS.passwords.includes(pass) || (customPass && pass === customPass);
+      if (user === ADMIN_CREDENTIALS.username && isPassValid) {
         localStorage.setItem('j77_admin_session', 'active');
         localStorage.setItem('j77_admin_user', user);
         // Redirect to dashboard
