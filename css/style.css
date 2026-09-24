@@ -1824,30 +1824,29 @@ button, input, select, textarea {
   right: 24px;
   z-index: 9999;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+  flex-direction: row;      /* bubble di KIRI, tombol di KANAN */
+  align-items: center;
+  gap: 12px;
 }
 
-/* Premium tooltip bubble */
+/* Premium tooltip bubble — muncul di sebelah KIRI tombol */
 .wa-bubble {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(14, 16, 24, 0.90);
+  gap: 8px;
+  background: rgba(14, 16, 24, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: #ffffff;
   border: 1px solid rgba(37, 211, 102, 0.35);
-  padding: 10px 16px 10px 14px;
+  padding: 10px 16px 10px 12px;
   border-radius: 18px;
   font-size: 0.82rem;
   font-weight: 700;
   box-shadow: 0 8px 28px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.04);
   white-space: nowrap;
-  transform-origin: right bottom;
+  transform-origin: right center;
   animation: wa-bubble-float 4s ease-in-out infinite;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .wa-bubble-dot {
@@ -1867,7 +1866,7 @@ button, input, select, textarea {
 
 @keyframes wa-bubble-float {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
+  50%       { transform: translateY(-4px); }
 }
 
 /* Main WA button — premium gradient + glassmorphism */
@@ -2143,8 +2142,8 @@ button, input, select, textarea {
     opacity: 1;
     pointer-events: auto;
   }
-  .nav-actions .btn-outline {
-    display: none;
+  .nav-actions .btn {
+    display: none !important;
   }
   .hero-title {
     font-size: 2.3rem;
@@ -2180,12 +2179,21 @@ button, input, select, textarea {
     grid-template-columns: 1fr;
   }
   .floating-whatsapp {
-    bottom: 18px;
-    right: 16px;
-    gap: 8px;
+    bottom: 20px;
+    right: 18px;
+    gap: 10px;
+    z-index: 99999;
   }
   .floating-whatsapp .wa-bubble {
-    display: none;
+    display: flex !important;
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 20px;
+    background: rgba(11, 13, 19, 0.96);
+    border: 1px solid rgba(37, 211, 102, 0.45);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
   }
   .wa-button {
     width: 56px;
@@ -2200,6 +2208,30 @@ button, input, select, textarea {
   }
   .cta-title {
     font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-whatsapp {
+    bottom: 16px;
+    right: 14px;
+    gap: 8px;
+  }
+  .floating-whatsapp .wa-bubble {
+    padding: 6px 11px;
+    font-size: 0.72rem;
+  }
+  .wa-button {
+    width: 52px;
+    height: 52px;
+  }
+  .wa-button svg {
+    width: 27px;
+    height: 27px;
+  }
+  .wa-pulse {
+    width: 52px;
+    height: 52px;
   }
 }
 
