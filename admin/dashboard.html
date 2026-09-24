@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin — Juragan 77 Makassar</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0c10'/><path d='M20 75 L45 25 L80 25 L55 75 Z' fill='%23e50914'/><text x='50' y='68' font-family='sans-serif' font-weight='900' font-size='38' fill='%23ffffff' text-anchor='middle'>77</text></svg>">
+</head>
+<body>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<div class="admin-layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-emblem">J<span>77</span></div>
+      <div>
+        <div class="logo-title">JURAGAN <span>77</span></div>
+        <div class="logo-sub">Admin Panel</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Utama</div>
+      <a class="sidebar-link active" data-panel="dashboard" href="#" id="nav-dashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Dashboard
+      </a>
+
+      <div class="nav-section-label">Konten Website</div>
+      <a class="sidebar-link" data-panel="wisata" href="#" id="nav-wisata">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Destinasi Wisata
+        <span class="sidebar-badge" id="badge-wisata">0</span>
+      </a>
+      <a class="sidebar-link" data-panel="galeri" href="#" id="nav-galeri">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Galeri Foto
+        <span class="sidebar-badge" id="badge-galeri">0</span>
+      </a>
+      <a class="sidebar-link" data-panel="armada" href="#" id="nav-armada">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+        Armada Mobil
+      </a>
+      <a class="sidebar-link" data-panel="testimoni" href="#" id="nav-testimoni">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+        Testimoni
+      </a>
+
+      <div class="nav-section-label">Pengaturan</div>
+      <a class="sidebar-link" data-panel="kontak" href="#" id="nav-kontak">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57V12c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57V12c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+        Info Kontak &amp; Lokasi
+      </a>
+      <a class="sidebar-link" data-panel="password" href="#" id="nav-password">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        Ganti Password
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="user-avatar-sidebar">A</div>
+        <div>
+          <div class="user-name" id="user-name-sidebar">Admin</div>
+          <div class="user-role">Super Administrator</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="admin-main">
+
+    <!-- Topbar -->
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+        <span class="page-title-bar" id="page-title-bar">Dashboard</span>
+      </div>
+      <div class="topbar-right">
+        <a href="../index.html" target="_blank" class="topbar-btn topbar-btn-preview">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          Lihat Website
+        </a>
+        <button class="topbar-btn topbar-btn-logout" id="btn-logout">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          Keluar
+        </button>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="admin-content">
+
+      <!-- ====== PANEL: DASHBOARD ====== -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="panel-header">
+          <div class="panel-title">Selamat Datang kembali, <span id="greet-name" style="color:var(--red);">Admin</span> 👋</div>
+          <div class="panel-subtitle">Ringkasan konten website Juragan 77 Makassar</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-red">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <div class="stat-label">Destinasi Wisata</div>
+              <div class="stat-value" id="stat-wisata">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            </div>
+            <div>
+              <div class="stat-label">Foto di Galeri</div>
+              <div class="stat-value" id="stat-galeri">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-gold">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <div>
+              <div class="stat-label">Armada Aktif</div>
+              <div class="stat-value">6</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+            </div>
+            <div>
+              <div class="stat-label">Testimoni</div>
+              <div class="stat-value" id="stat-testi">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Aksi Cepat
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <button class="btn btn-primary" onclick="switchPanel('wisata')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Tambah Destinasi Wisata
+            </button>
+            <button class="btn btn-secondary" onclick="switchPanel('galeri')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+              Upload Foto Galeri
+            </button>
+            <button class="btn btn-secondary" onclick="switchPanel('testimoni')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+              Tambah Testimoni
+            </button>
+            <a href="../index.html" target="_blank" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              Preview Website
+            </a>
+          </div>
+        </div>
+
+        <!-- ====== GALERI FOTO & UNIT DASHBOARD ====== -->
+        <div class="dash-gallery-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                Galeri Foto &amp; Unit Armada
+                <span class="badge-count" id="dash-galeri-count">0 Unit</span>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+                Dokumentasi unit mobil rental, kegiatan trip, dan galeri Juragan 77 Makassar
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <div class="dash-galeri-filter" id="dash-galeri-filter">
+                <button type="button" class="filter-chip active" data-filter="all">Semua</button>
+                <button type="button" class="filter-chip" data-filter="armada">🚗 Armada</button>
+                <button type="button" class="filter-chip" data-filter="wisata">🌅 Wisata</button>
+                <button type="button" class="filter-chip" data-filter="pelanggan">👥 Pelanggan</button>
+                <button type="button" class="filter-chip" data-filter="kantor">🏢 Kantor</button>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="switchPanel('galeri')" style="display:flex; align-items:center; gap:6px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Upload / Kelola Foto
+              </button>
+            </div>
+          </div>
+
+          <!-- Unit Stats Mini Bar -->
+          <div class="dash-unit-summary" id="dash-unit-summary">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- Grid Display -->
+          <div id="dash-gallery-grid" class="dash-gallery-grid">
+            <!-- populated by JS -->
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+              Aktivitas Terbaru
+            </div>
+          </div>
+          <div id="activity-log">
+            <div class="empty-state" style="padding: 32px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+              <p>Belum ada aktivitas tercatat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: DESTINASI WISATA ====== -->
+      <div class="panel" id="panel-wisata">
+        <div class="panel-header">
+          <div class="panel-title">Destinasi Wisata</div>
+          <div class="panel-subtitle">Kelola daftar rekomendasi destinasi yang tampil di website</div>
+        </div>
+
+        <!-- Add Form -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Tambah Destinasi Baru
+            </div>
+          </div>
+
+          <form id="form-wisata">
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label" for="w-nama">Nama Destinasi *</label>
+                <input type="text" id="w-nama" class="field-input" placeholder="cth: Tana Toraja" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="w-lokasi">Lokasi / Kabupaten *</label>
+                <input type="text" id="w-lokasi" class="field-input" placeholder="cth: Tana Toraja, Sulsel" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label" for="w-jarak">Jarak dari Makassar</label>
+                <input type="text" id="w-jarak" class="field-input" placeholder="cth: ±328 km (± 7 Jam)">
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="w-kategori">Kategori</label>
+                <select id="w-kategori" class="field-select">
+                  <option value="budaya">🏛 Wisata Budaya</option>
+                  <option value="pantai">🏖 Pantai & Bahari</option>
+                  <option value="alam">🌿 Alam & Petualangan</option>
+                  <option value="kuliner">🍜 Kuliner & City Tour</option>
+                  <option value="pegunungan">⛰ Pegunungan</option>
+                  <option value="religi">🕌 Wisata Religi</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label" for="w-deskripsi">Deskripsi Singkat *</label>
+                <textarea id="w-deskripsi" class="field-textarea" placeholder="Ceritakan keindahan destinasi ini..." required></textarea>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label">Foto Destinasi</label>
+                <div class="upload-zone" id="wisata-upload-zone">
+                  <input type="file" id="w-foto" accept="image/*">
+                  <div class="upload-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                  </div>
+                  <div class="upload-title">Klik atau seret foto ke sini</div>
+                  <div class="upload-sub">Pilih gambar destinasi yang menarik</div>
+                  <div class="upload-formats">Format: JPG, PNG, WebP · Maks. 5MB</div>
+                </div>
+                <div class="img-preview" id="wisata-img-preview">
+                  <img id="wisata-preview-img" src="" alt="Preview">
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+              <button type="submit" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Simpan Destinasi
+              </button>
+              <button type="reset" class="btn btn-secondary" id="reset-wisata-form">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Destination List -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+              Daftar Destinasi (<span id="wisata-count">0</span>)
+            </div>
+            <button class="btn btn-danger btn-sm" id="clear-all-wisata" style="display:none;">
+              Hapus Semua
+            </button>
+          </div>
+          <div id="wisata-list">
+            <div class="empty-state">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <h3>Belum Ada Destinasi</h3>
+              <p>Tambahkan destinasi wisata menggunakan form di atas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: GALERI ====== -->
+      <div class="panel" id="panel-galeri">
+        <div class="panel-header">
+          <div class="panel-title">Galeri Foto</div>
+          <div class="panel-subtitle">Upload dan kelola foto-foto yang tampil di galeri website</div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Upload Foto Baru
+            </div>
+          </div>
+
+          <form id="form-galeri">
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label" for="g-judul">Judul Foto *</label>
+                <input type="text" id="g-judul" class="field-input" placeholder="cth: Armada Fortuner 2024" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="g-kategori">Kategori</label>
+                <select id="g-kategori" class="field-select">
+                  <option value="armada">🚗 Armada Mobil</option>
+                  <option value="wisata">🌅 Wisata & Destinasi</option>
+                  <option value="pelanggan">👥 Pelanggan & Momen</option>
+                  <option value="kantor">🏢 Kantor & Fasilitas</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label" for="g-keterangan">Keterangan (Opsional)</label>
+                <input type="text" id="g-keterangan" class="field-input" placeholder="Keterangan singkat tentang foto...">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label">Pilih Foto (bisa pilih banyak)</label>
+                <div class="upload-zone" id="galeri-upload-zone">
+                  <input type="file" id="g-foto" accept="image/*" multiple>
+                  <div class="upload-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zm0 0v7"/></svg>
+                  </div>
+                  <div class="upload-title">Klik atau seret banyak foto sekaligus</div>
+                  <div class="upload-sub">Pilih satu atau lebih foto untuk diupload</div>
+                  <div class="upload-formats">JPG, PNG, WebP · Maks. 5MB per foto</div>
+                </div>
+                <div id="galeri-preview-wrap" style="display:none; margin-top:14px;">
+                  <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:8px;" id="galeri-preview-count"></div>
+                  <div id="galeri-preview-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap:10px;"></div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+              <button type="submit" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                Simpan ke Galeri
+              </button>
+              <button type="reset" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Gallery Grid Display -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+              Semua Foto di Galeri (<span id="galeri-count">0</span>)
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="filter-galeri" class="field-select" style="padding:6px 12px; font-size:0.82rem;">
+                <option value="all">Semua Kategori</option>
+                <option value="armada">Armada</option>
+                <option value="wisata">Wisata</option>
+                <option value="pelanggan">Pelanggan</option>
+                <option value="kantor">Kantor</option>
+              </select>
+              <button class="btn btn-danger btn-sm" id="clear-all-galeri" style="display:none;">
+                Hapus Semua
+              </button>
+            </div>
+          </div>
+          <div class="gallery-grid" id="galeri-display">
+            <div class="empty-state" style="grid-column: 1/-1; padding: 40px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+              <h3>Galeri Masih Kosong</h3>
+              <p>Upload foto menggunakan form di atas untuk mengisi galeri</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: ARMADA ====== -->
+      <div class="panel" id="panel-armada">
+        <div class="panel-header">
+          <div class="panel-title">Armada Mobil</div>
+          <div class="panel-subtitle">Informasi armada yang tampil di website (dikontrol lewat main.js)</div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+              Daftar Armada Aktif
+            </div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nama Armada</th>
+                <th>Kategori</th>
+                <th>Kapasitas</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="armada-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: TESTIMONI ====== -->
+      <div class="panel" id="panel-testimoni">
+        <div class="panel-header">
+          <div class="panel-title">Testimoni Pelanggan</div>
+          <div class="panel-subtitle">Tambah dan kelola ulasan pelanggan yang tampil di website</div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Tambah Testimoni Baru
+            </div>
+          </div>
+          <form id="form-testi">
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label" for="t-nama">Nama Pelanggan *</label>
+                <input type="text" id="t-nama" class="field-input" placeholder="cth: Bapak Andi Firmansyah" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="t-asal">Asal / Kota</label>
+                <input type="text" id="t-asal" class="field-input" placeholder="cth: Jakarta">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label" for="t-rating">Rating Bintang</label>
+                <select id="t-rating" class="field-select">
+                  <option value="5">⭐⭐⭐⭐⭐ — 5 Bintang</option>
+                  <option value="4">⭐⭐⭐⭐ — 4 Bintang</option>
+                  <option value="3">⭐⭐⭐ — 3 Bintang</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="t-armada">Armada Digunakan</label>
+                <input type="text" id="t-armada" class="field-input" placeholder="cth: Toyota Innova Zenix">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label" for="t-ulasan">Isi Ulasan *</label>
+                <textarea id="t-ulasan" class="field-textarea" placeholder="Cerita pengalaman pelanggan menggunakan Juragan 77..." required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Simpan Testimoni
+            </button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+              Daftar Testimoni (<span id="testi-count">0</span>)
+            </div>
+            <button class="btn btn-danger btn-sm" id="clear-all-testi" style="display:none;">Hapus Semua</button>
+          </div>
+          <div id="testi-list">
+            <div class="empty-state">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+              <h3>Belum Ada Testimoni</h3>
+              <p>Tambahkan ulasan pelanggan menggunakan form di atas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: KONTAK ====== -->
+      <div class="panel" id="panel-kontak">
+        <div class="panel-header">
+          <div class="panel-title">Info Kontak &amp; Lokasi</div>
+          <div class="panel-subtitle">Perbarui informasi kontak yang tampil di website</div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+              Edit Info Kontak
+            </div>
+          </div>
+          <form id="form-kontak">
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label">Nomor WhatsApp (format: 628...)</label>
+                <input type="text" id="k-wa" class="field-input" value="6281244557777" placeholder="6281244557777">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Nomor Hotline (tampil di website)</label>
+                <input type="text" id="k-telp" class="field-input" value="0812-4455-7777" placeholder="0812-4455-7777">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label">Alamat Lengkap</label>
+                <textarea id="k-alamat" class="field-textarea" style="min-height:70px;">Jl. Perintis Kemerdekaan KM 18 (Area Bandara UPG), Makassar</textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label">Email</label>
+                <input type="email" id="k-email" class="field-input" value="kontak@juragan77rental.com">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Instagram Handle</label>
+                <input type="text" id="k-ig" class="field-input" value="@juragan77_rentalmakassar">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Simpan Perubahan
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ====== PANEL: GANTI PASSWORD ====== -->
+      <div class="panel" id="panel-password">
+        <div class="panel-header">
+          <div class="panel-title">Ganti Password Admin</div>
+          <div class="panel-subtitle">Ubah username dan password login admin</div>
+        </div>
+        <div class="admin-card" style="max-width: 480px;">
+          <form id="form-password">
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label">Username Baru</label>
+                <input type="text" id="p-user" class="field-input" placeholder="Username baru">
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="field-group">
+                <label class="field-label">Password Lama *</label>
+                <input type="password" id="p-old" class="field-input" placeholder="Password yang sedang digunakan" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field-group">
+                <label class="field-label">Password Baru *</label>
+                <input type="password" id="p-new" class="field-input" placeholder="Password baru (min 6 karakter)" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Konfirmasi Password</label>
+                <input type="password" id="p-confirm" class="field-input" placeholder="Ulangi password baru" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              Update Password
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- end admin-content -->
+  </main>
+</div><!-- end admin-layout -->
+
+<!-- Lightbox Modal Preview Foto Unit -->
+<div class="lightbox-modal" id="gallery-lightbox-modal">
+  <div class="lightbox-content">
+    <div class="lightbox-img-wrap">
+      <button type="button" class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Tutup preview">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+      <img id="lightbox-modal-img" src="" alt="Detail Foto Unit">
+    </div>
+    <div class="lightbox-info">
+      <div class="lightbox-details">
+        <div class="lightbox-title">
+          <span id="lightbox-modal-title">Judul Unit</span>
+          <span class="dash-cat-badge armada" id="lightbox-modal-badge">ARMADA</span>
+        </div>
+        <div class="lightbox-desc" id="lightbox-modal-desc">Keterangan unit...</div>
+        <div class="lightbox-meta" id="lightbox-modal-meta">📅 Diupload pada...</div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn btn-secondary btn-sm" id="lightbox-close-action-btn">Tutup</button>
+        <button type="button" class="btn btn-primary btn-sm" id="lightbox-to-galeri-btn">Buka di Galeri &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
