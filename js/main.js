@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SARAPPO 4788 RENTAL MOBIL MAKASSAR
  * Interactive Javascript Logic & WhatsApp Integration
  */
@@ -8,7 +8,7 @@ const JURAGAN_CONFIG = {
   phoneDisplay: "0821-7121-1777",
   waNumber: "6282171211777", // Format internasional tanpa simbol
   email: "kontak@sarappo4788rental.com",
-  officeAddress: "Jl. Perintis Kemerdekaan KM 18 (Dekat Bandara Sultan Hasanuddin), Makassar, Sulawesi Selatan",
+  officeAddress: "Jl. Ade Irma Nasution, Ujung Pandang Baru, Kec. Tallo, Kota Makassar, Sulawesi Selatan 90215",
   instagram: "@sarappo4788_rentalmakassar"
 };
 
