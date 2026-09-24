@@ -5,8 +5,8 @@
 
 // Konfigurasi Kontak Juragan 77
 const JURAGAN_CONFIG = {
-  phoneDisplay: "0812-4455-7777",
-  waNumber: "6281244557777", // Format internasional tanpa simbol
+  phoneDisplay: "0821-7121-1777",
+  waNumber: "6282171211777", // Format internasional tanpa simbol
   email: "kontak@juragan77rental.com",
   officeAddress: "Jl. Perintis Kemerdekaan KM 18 (Dekat Bandara Sultan Hasanuddin), Makassar, Sulawesi Selatan",
   instagram: "@juragan77_rentalmakassar"

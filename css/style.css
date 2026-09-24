@@ -454,6 +454,25 @@ button, input, select, textarea {
   text-decoration: none;
 }
 
+.brand-logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  flex-shrink: 0;
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 18px rgba(229, 9, 20, 0.8));
+}
+
+.footer-about .brand-logo-img {
+  width: 58px;
+  height: 58px;
+}
+
 .brand-emblem {
   width: 48px;
   height: 48px;
@@ -1796,74 +1815,143 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   FLOATING ACTION BUTTONS
+   FLOATING ACTION BUTTONS — PREMIUM REDESIGN
    ========================================================================== */
 
 .floating-whatsapp {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
+  bottom: 28px;
+  right: 24px;
+  z-index: 9999;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
 }
 
+/* Premium tooltip bubble */
 .wa-bubble {
-  background: var(--bg-surface);
-  color: #ffffff;
-  border: 1px solid var(--border-red);
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
-  font-size: 0.82rem;
-  font-weight: 600;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  gap: 8px;
-  animation: bounce-subtle 3s infinite;
+  gap: 10px;
+  background: rgba(14, 16, 24, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  padding: 10px 16px 10px 14px;
+  border-radius: 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.04);
+  white-space: nowrap;
+  transform-origin: right bottom;
+  animation: wa-bubble-float 4s ease-in-out infinite;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.wa-button {
-  width: 60px;
-  height: 60px;
+.wa-bubble-dot {
+  width: 8px;
+  height: 8px;
   background: #25d366;
   border-radius: 50%;
+  box-shadow: 0 0 8px #25d366;
+  animation: wa-dot-pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes wa-dot-pulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.8; }
+  50%       { transform: scale(1.4); opacity: 1; }
+}
+
+@keyframes wa-bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Main WA button — premium gradient + glassmorphism */
+.wa-button {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2ecc71 0%, #25d366 45%, #1aa354 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 1.8rem;
-  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
-  transition: var(--transition);
-  position: relative;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55),
+              0 0 0 4px rgba(37, 211, 102, 0.12),
+              inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+  overflow: visible;
+  text-decoration: none;
+}
+
+.wa-button::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .wa-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.7),
+              0 0 0 6px rgba(37, 211, 102, 0.15),
+              inset 0 1px 0 rgba(255,255,255,0.35);
+  color: #ffffff;
 }
 
+.wa-button:active {
+  transform: scale(1.0);
+}
+
+/* 3-ring pulsing aura */
 .wa-pulse {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  border: 2px solid #25d366;
-  animation: wa-ring 2s infinite;
-  opacity: 0.7;
+  border: 2.5px solid #25d366;
+  animation: wa-ring 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+.wa-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(37, 211, 102, 0.4);
+  animation: wa-ring 2.2s ease-out 0.55s infinite;
 }
 
 @keyframes wa-ring {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.4); opacity: 0; }
+  0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.85; }
+  100% { transform: translate(-50%,-50%) scale(1.65); opacity: 0; }
+}
+
+/* Badge — online indicator */
+.wa-button-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2.5px solid var(--bg-main);
+  z-index: 2;
+  box-shadow: 0 0 8px #22c55e;
+  animation: wa-dot-pulse 2s ease-in-out infinite;
 }
 
 .back-to-top {
@@ -2091,8 +2179,21 @@ button, input, select, textarea {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+  .floating-whatsapp {
+    bottom: 18px;
+    right: 16px;
+    gap: 8px;
+  }
   .floating-whatsapp .wa-bubble {
     display: none;
+  }
+  .wa-button {
+    width: 56px;
+    height: 56px;
+  }
+  .wa-pulse {
+    width: 56px;
+    height: 56px;
   }
   .cta-banner {
     padding: 40px 20px;
@@ -2784,19 +2885,344 @@ button, input, select, textarea {
 
 @media (max-width: 480px) {
   .customer-gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .cust-gallery-card {
+    border-radius: 8px;
+  }
+  .cust-gallery-bar {
+    padding: 5px 8px;
+  }
+  .cust-card-loc {
+    font-size: 0.68rem;
   }
   .gallery-flanked-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     gap: 10px;
   }
   .gallery-flanked-tag::before,
   .gallery-flanked-tag::after {
-    width: 25px;
+    width: 24px;
   }
   .gallery-main-title {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
+  }
+  .gallery-subtitle-desc {
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+  }
+}
+
+/* ============================================================
+   COMPREHENSIVE MOBILE RESPONSIVE IMPROVEMENTS
+   Target: phones up to 480px & 360px (small Android)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* General spacing */
+  .section {
+    padding: 60px 0;
+  }
+  .section-gallery {
+    padding: 60px 0 70px;
+  }
+  .destination-section {
+    padding: 60px 0;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    min-height: auto;
+    padding: 50px 0 60px;
+  }
+  .hero-title {
+    font-size: 2.0rem;
+    letter-spacing: -0.5px;
+  }
+  .hero-desc {
+    font-size: 1rem;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  .hero-badge {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+
+  /* Booking card — show below hero on mobile */
+  .booking-card {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+  .booking-title {
+    font-size: 1.25rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Fleet cards — 2 columns */
+  .fleet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .car-image-box {
+    height: 180px;
+  }
+  .car-title {
+    font-size: 1.05rem;
+  }
+  .car-info {
+    padding: 16px;
+  }
+
+  /* Trust badges — 2 col */
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .trust-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  /* Testimonials */
+  .testi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  /* FAQ */
+  .faq-question {
+    font-size: 0.95rem;
+    padding: 18px 20px;
+  }
+
+  /* CTA */
+  .cta-banner {
+    padding: 36px 20px;
+    border-radius: 16px;
+  }
+  .cta-title {
+    font-size: 1.5rem;
+  }
+  .cta-desc {
+    font-size: 0.92rem;
+  }
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cta-actions .btn {
+    justify-content: center;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 50px 0 24px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  /* Gallery lightbox on mobile */
+  .web-lightbox-container {
+    border-radius: 14px;
+    max-height: 95vh;
+  }
+  .web-lightbox-bar {
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .web-lightbox-info {
+    min-width: 0;
+  }
+  .web-lightbox-title {
+    font-size: 1.1rem;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    bottom: 18px;
+    left: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fleet cards — keep 2 col on small phones too */
+  .fleet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .car-image-box {
+    height: 140px;
+  }
+  .car-info {
+    padding: 12px;
+  }
+  .car-title {
+    font-size: 0.88rem;
+  }
+  .car-type-desc {
+    display: none;
+  }
+  .car-specs {
+    gap: 5px;
+  }
+  .spec-pill {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+  .car-badge {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+  }
+  .car-pricing-box {
+    padding: 10px;
+  }
+  .price-label,
+  .price-val {
+    font-size: 0.78rem;
+  }
+  .gold-val {
+    font-size: 0.84rem;
+  }
+  .car-actions {
+    gap: 8px;
+  }
+  .car-actions .btn {
+    font-size: 0.78rem;
+    padding: 8px 10px;
+  }
+
+  /* Hero adjustments for small phone */
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  .hero-desc {
+    font-size: 0.92rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-cta-group .btn {
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-top: 18px;
+  }
+  .stat-number {
+    font-size: 1.25rem;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+  }
+
+  /* Trust badges — single col */
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .trust-item {
+    gap: 12px;
+  }
+
+  /* Testimonials — 1 col */
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-desc {
+    font-size: 0.88rem;
+  }
+
+  /* Booking form */
+  .booking-card {
+    padding: 20px 16px;
+  }
+  .booking-title {
+    font-size: 1.1rem;
+  }
+  .service-toggle-btn {
+    font-size: 0.78rem;
+    padding: 8px 6px;
+  }
+  .form-input, .form-select {
+    padding: 11px 12px;
+    font-size: 0.88rem;
+  }
+
+  /* Destination section */
+  .dest-card-hero .dest-title {
+    font-size: 1.4rem;
+  }
+  .dest-title {
+    font-size: 1rem;
+  }
+  .dest-tag {
+    font-size: 0.72rem;
+  }
+}
+
+/* Extra tiny screens (Samsung Galaxy S6, 360px) */
+@media (max-width: 360px) {
+  .customer-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .fleet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .hero-title {
+    font-size: 1.55rem;
+  }
+  .filter-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+  .nav-container {
+    height: 64px;
+  }
+  .nav-menu {
+    top: 64px;
+  }
+  .brand-logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  .brand-title {
+    font-size: 0.95rem;
+  }
+  .brand-subtitle {
+    font-size: 0.65rem;
   }
 }
 
